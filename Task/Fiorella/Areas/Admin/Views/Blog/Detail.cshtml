@@ -1,0 +1,24 @@
+﻿@model BlogDetailVM
+@{
+    ViewData["Title"] = "Detail";
+}
+
+
+<div class="container mt-5">
+    <div class="form-group">
+        <label>Name</label>
+        <input asp-for="Title" type="text" class="form-control">
+
+        <label>Description</label>
+        <input asp-for="Description" type="text" class="form-control">
+
+        <label>Name</label>
+        <input asp-for="Date" type="text" class="form-control">
+
+        <label>Name</label>
+        <input asp-for="Image" type="text" class="form-control">
+    </div>
+   
+
+    <a asp-action="Index" class="btn btn-primary text-white">Back</a>
+</div>

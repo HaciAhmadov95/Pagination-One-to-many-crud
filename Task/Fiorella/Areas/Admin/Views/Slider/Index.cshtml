@@ -1,0 +1,46 @@
+﻿@using Fiorella.ViewModels.Sliders;
+@model List<SliderVM>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container mt-5">
+    <div class="create-category">
+        <a asp-action="Create" class="btn btn-success text-white" style="font-size:30px; width:120px">+</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-contextual">
+            <thead>
+                <tr>
+
+                    <th> Image </th>
+                    <th> Operation </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="table-info">
+                        <td>
+                            <img src="~/img/@item.Image" style="width:100px !important; height:100px !important">
+                        </td>
+
+                        <td>
+                            <a class="btn btn-info text-white" asp-action="Detail" asp-route-id="@item.Id">Info</a>
+                            <a class="btn btn-warning text-white" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <form class="form-sample d-inline" method="post" asp-action="Delete" asp-route-id="@item.Id">
+                                <button type="submit" class="btn btn-danger text-white">Delete</button>
+                            </form>
+
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

@@ -1,0 +1,108 @@
+﻿@using Fiorella.ViewModels.Products;
+
+@model List<ProductVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container mt-5">
+    <div class="create-product">
+        <a asp-action="Create" class="btn btn-success text-white" style="font-size:30px; width:120px">+</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-contextual">
+            <thead>
+                <tr>
+
+                    <th> Image</th>
+                    <th> Name </th>
+                    <th> Description</th>
+                    <th> Price </th>
+                    <th> Category </th>
+                    <th> Operation </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="table-info">
+                        <td>
+                            <img src="~/img/@item.Image" style="width:100px;height:100px"/>
+                        </td>
+                        <td>
+                            @item.Name
+                        </td>
+                        <td>
+                            @item.Description
+                        </td>
+                        <td>
+                            @item.Price
+                        </td>
+                        <td>
+                            @item.Category
+                        </td>
+
+                        <td>
+                            <a class="btn btn-info text-white" asp-action="Detail" asp-route-id="@item.Id">Info</a>
+                            <a class="btn btn-warning text-white" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <form class="form-sample d-inline" method="post" asp-action="Delete" asp-route-id="@item.Id">
+                                <button type="submit" class="btn btn-danger text-white">Delete</button>
+                            </form>
+
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="paginate-area d-flex justify-content-center mt-4">
+        <nav aria-label="...">
+            <ul class="pagination">
+               @if (ViewBag.currentPage > 1)
+                        {
+                            <li class="page-item">
+                                <a class="page-link" asp-action="Index" asp-route-page="@(ViewBag.currentPage-1)">Previous</a>
+
+                            </li>
+                        }
+                        else
+                        {
+
+                            <li class="page-item disabled">
+                                <a class="page-link" asp-action="Index" asp-route-page="@(ViewBag.currentPage-1)">Previous</a>
+
+                            </li>
+                        }
+
+
+                @for (int i = 1; i <= @ViewBag.pageCount; i++)
+                {
+                    <li class="page-item @(ViewBag.currentPage == i ? "disabled" : "") "><a class="page-link @(ViewBag.currentPage == i ? "paginate-active" : "")" asp-action="Index" asp-route-page="@i">@i</a></li>
+                }
+
+
+                <li class="page-item ">
+                    @if (ViewBag.currentPage < ViewBag.pageCount)
+                    {
+                        <a class="page-link" asp-action="Index" asp-route-page="@(ViewBag.currentPage+1)">Next</a>
+
+                    }
+                    else
+                    {
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                    }
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+ 

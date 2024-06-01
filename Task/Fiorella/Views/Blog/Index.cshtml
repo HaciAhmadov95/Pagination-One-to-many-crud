@@ -1,0 +1,33 @@
+﻿@model List<Blog>
+
+<section id="blog">
+    <div class="container">
+        <div class="row py-5">
+            <div class="offset-lg-3 col-lg-6">
+                <div class="section-title">
+                    <h1>From our Blog</h1>
+                    <p class="text-black-50">
+                        A perfect blend of creativity, energy, communication, happiness and
+                        love. Let us arrange
+                        a smile for you.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row pb-5 blogs-area" data-count ="@ViewBag.count">
+        <partial name="_BlogsPartial" model="Model" />
+        </div>
+        <div class="show-more d-flex justify-content-center mt-3 mb-3 w-100">
+            <button class="btn btn-success">Show more</button>
+        </div>
+    </div>
+</section>
+
+@section js{
+    <script src="~/js/Blog.js"></script>
+}
+  
+
+
+
+

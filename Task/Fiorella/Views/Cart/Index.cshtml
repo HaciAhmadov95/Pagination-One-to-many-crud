@@ -1,0 +1,66 @@
+﻿@using Fiorella.ViewModels.Baskets;
+
+
+@model CartVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (Model.Total != 0)
+{
+    <div class="table-responsive mt-5 cart-body">
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th> Image </th>
+                    <th> Name</th>
+                    <th> Description </th>
+                    <th> Price </th>
+                    <th> Count </th>
+                    <th> Category </th>
+                    <th> Operation </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.BasketProducts)
+                {
+                    <tr>
+                        <td>
+                            <img src="~/img/@item.Image" style="height:100px; width:100px" />
+                        </td>
+                        <td>
+                            @item.Name
+                        </td>
+                        <td>
+                            @item.Description
+                        </td>
+                        <td>
+                            @item.Price
+                        </td>
+                        <td>
+                            @item.Count
+                        </td>
+                        <td>
+                            @item.Category
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm text-white delete-basket-data" data-id="@item.Id">Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <h1 class="cart-total">Total : @Model.Total</h1>
+        </table>
+    </div>
+}
+else
+{
+    <div class="container">
+        <div class="alert alert-warning" role="alert">
+          Cart page is empty!
+        </div>
+    </div>
+}
+
+
+

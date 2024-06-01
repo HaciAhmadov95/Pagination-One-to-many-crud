@@ -1,0 +1,48 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section css {
+    <link rel="stylesheet" href="~/css/product.css">
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="project-info-box mt-0">
+                <h5>@Model.Name</h5>
+                <p class="mb-0">@Model.Description</p>
+            </div><!-- / project-info-box -->
+
+            <div class="project-info-box">
+                <p><b>Category:</b> @Model.Category.Name</p>
+                <p><b>Price:</b> @Model.Price</p>
+                
+               
+            </div><!-- / project-info-box -->
+
+            <div class="project-info-box mt-0 mb-0">
+                <p class="mb-0">
+                    <span class="fw-bold mr-10 va-middle hide-mobile">Share:</span>
+                    <a href="#x" class="btn btn-xs btn-facebook btn-circle btn-icon mr-5 mb-0"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#x" class="btn btn-xs btn-twitter btn-circle btn-icon mr-5 mb-0"><i class="fab fa-twitter"></i></a>
+                    <a href="#x" class="btn btn-xs btn-pinterest btn-circle btn-icon mr-5 mb-0"><i class="fab fa-pinterest"></i></a>
+                    <a href="#x" class="btn btn-xs btn-linkedin btn-circle btn-icon mr-5 mb-0"><i class="fab fa-linkedin-in"></i></a>
+                </p>
+            </div><!-- / project-info-box -->
+        </div><!-- / column -->
+
+        <div class="col-md-7">
+           @foreach (var item in Model.ProductImages)
+            {
+                <img src="~/img/@item.Name" alt="project-image" class="rounded">
+            }
+            <div class="project-info-box">
+                <p><b>Categories:</b> Design, Illustration</p>
+                <p><b>Skills:</b> Illustrator</p>
+            </div><!-- / project-info-box -->
+        </div><!-- / column -->
+    </div>
+</div>
+

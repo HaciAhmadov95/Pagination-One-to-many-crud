@@ -1,0 +1,51 @@
+﻿
+@model List<BlogVM>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="table-responsive mt-5">
+    <div class="Create Category">
+        <a asp-action="Create" class="btn btn-success text-white" style="font-size:30px;width:120px">+</a>
+    </div>
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th> Title </th>
+                <th> Description </th>
+                <th> Date </th>
+                <th> Image </th>
+                <th> Operation </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Title 
+                    </td>
+
+                    <td>
+                        @item.Description
+                    </td>
+
+                    <td>
+                        @item.Date
+                    </td>
+
+                    <td>
+                        @item.Image
+                    </td>
+
+                    <td>
+                        <a class="btn btn-info text-white" asp-action="Detail" asp-route-id="@item.Id">Info</a>
+                        <a class="btn btn-warning text-white" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <form class="forms-sample d-inline" method="post" asp-action="Delete" asp-route-id="@item.Id">
+                            <button type="submit" class="btn btn-danger text-white">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
